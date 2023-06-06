@@ -6,6 +6,9 @@ jobs:
     docker:
       - image: cimg/openjdk:11.0.16
     steps:
+      - add_ssh_keys:
+          fingerprints:
+          - "fa:de:2a:6d:ab:5e:b1:23:26:cd:55:12:c4:d4:0d:b1"
       - checkout
       - run:
           name: code-coverage
