@@ -9,4 +9,5 @@
 	<suppress files="[\\/]build.log" checks="NoHttp"/>
 	<suppress files=".+\.(jar|git|ico|p12|gif|jks|jpg|svg)" checks="NoHttp"/>
 	<suppress files="mvn*" checks="NoHttp"/>
+	<suppress files="dependency-reduced-pom.xml" checks="NoHttp" />
 </suppressions>
