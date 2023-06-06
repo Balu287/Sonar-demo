@@ -1,0 +1,21 @@
+version: 2.1
+orbs:
+  sonarqube: clicklogiq/sonarqube@1.0.1
+jobs:
+  code-analysis:
+    docker:
+      - image: cimg/openjdk:11.0.16
+    steps:
+      - checkout
+      - install-engine
+      - run:
+          name: code-coverage
+          command: |
+            cd /home/circleci/project/
+            ls -lrt /home/circleci/project/
+            mvn clean test
+            mvn clean verify sonar:sonar   -Dsonar.projectKey=petclinic1   -Dsonar.projectName='petclinic1'   -Dsonar.host.url=http://localhost:9002   -Dsonar.token=sqp_1055bc970aefb0003feeca253c63fda413de595e
+workflows:
+  main-workflow:
+    jobs:
+      - code-analysis
