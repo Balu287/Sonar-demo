@@ -1,27 +1,10 @@
 version: 2.1
-commands:
-  install-engine:
-    description: "Install Sonarqube scanner"
-    parameters:
-      engine_version:
-        type: string
-        default: "4.6.0.2311"
-    steps:
-      - run:
-          name: "Install Sonarqube scanner"
-          command: |
-            wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-<< parameters.engine_version >>.zip
-            unzip sonar-scanner-cli-<< parameters.engine_version >>.zip
 jobs:
   code-analysis:
     docker:
       - image: cimg/openjdk:11.0.16
     steps:
-      - add_ssh_keys:
-          fingerprints:
-          - "4b:97:c4:48:10:9c:5e:8d:f3:bd:a7:d4:c1:66:cf:b7"
       - checkout
-      - install-engine
       - run:
           name: code-coverage
           command: |
