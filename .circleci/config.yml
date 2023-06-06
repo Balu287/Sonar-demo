@@ -7,7 +7,6 @@ jobs:
       - image: cimg/openjdk:11.0.16
     steps:
       - checkout
-      - install-engine
       - run:
           name: code-coverage
           command: |
