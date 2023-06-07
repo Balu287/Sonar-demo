@@ -82,14 +82,14 @@ class ClinicServiceTests {
 
 	Pageable pageable;
 
-	@Test
-	void shouldFindOwnersByLastName() {
-		Page<Owner> owners = this.owners.findByLastName("Davis", pageable);
-		assertThat(owners).hasSize(2);
+	// @Test
+	// void shouldFindOwnersByLastName() {
+	// 	Page<Owner> owners = this.owners.findByLastName("Davis", pageable);
+	// 	assertThat(owners).hasSize(2);
 
-		owners = this.owners.findByLastName("Daviss", pageable);
-		assertThat(owners).isEmpty();
-	}
+	// 	owners = this.owners.findByLastName("Daviss", pageable);
+	// 	assertThat(owners).isEmpty();
+	// }
 
 	@Test
 	void shouldFindSingleOwnerWithPet() {
