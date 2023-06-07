@@ -95,7 +95,7 @@ class OwnerController {
 			owner.setLastName(""); // empty string signifies broadest possible search
 		}
 
-		find owners by last name
+		//find owners by last name
 		String lastName = owner.getLastName();
 		Page<Owner> ownersResults = findPaginatedForOwnersLastName(page, lastName);
 		if (ownersResults.isEmpty()) {
