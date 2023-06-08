@@ -99,7 +99,7 @@ class OwnerController {
 		String lastName = owner.getLastName();
 		Page<Owner> ownersResults = findPaginatedForOwnersLastName(page, lastName);
 		if (ownersResults.isEmpty()) {
-			// no owners found
+			// owners found
 			result.rejectValue("lastName", "notFound", "not found");
 			return "owners/findOwners";
 		}
