@@ -158,16 +158,16 @@ class OwnerControllerTests {
 	// 			.andExpect(view().name("redirect:/owners/" + TEST_OWNER_ID));
 	// }
 
-	// @Test
-	// void testProcessFindFormNoOwnersFound() throws Exception {
-	// 	Page<Owner> tasks = new PageImpl<Owner>(Lists.newArrayList());
-	// 	Mockito.when(this.owners.findByLastName(eq("Unknown Surname"), any(Pageable.class))).thenReturn(tasks);
-	// 	mockMvc.perform(get("/owners?page=1").param("lastName", "Unknown Surname")).andExpect(status().isOk())
-	// 			.andExpect(model().attributeHasFieldErrors("owner", "lastName"))
-	// 			.andExpect(model().attributeHasFieldErrorCode("owner", "lastName", "notFound"))
-	// 			.andExpect(view().name("owners/findOwners"));
+	@Test
+	void testProcessFindFormNoOwnersFound() throws Exception {
+		Page<Owner> tasks = new PageImpl<Owner>(Lists.newArrayList());
+		Mockito.when(this.owners.findByLastName(eq("Unknown Surname"), any(Pageable.class))).thenReturn(tasks);
+		mockMvc.perform(get("/owners?page=1").param("lastName", "Unknown Surname")).andExpect(status().isOk())
+				.andExpect(model().attributeHasFieldErrors("owner", "lastName"))
+				.andExpect(model().attributeHasFieldErrorCode("owner", "lastName", "notFound"))
+				.andExpect(view().name("owners/findOwners"));
 
-	// }
+	}
 
 	@Test
 	void testInitUpdateOwnerForm() throws Exception {
