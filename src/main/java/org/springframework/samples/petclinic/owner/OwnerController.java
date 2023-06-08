@@ -98,12 +98,12 @@ class OwnerController {
 		//find owners by last name
 		String lastName = owner.getLastName();
 		Page<Owner> ownersResults = findPaginatedForOwnersLastName(page, lastName);
-		// if (ownersResults.isEmpty()) {
-		// 	// no owners found
-		// 	result.rejectValue("lastName", "notFound", "not found");
-		// 	return "owners/findOwners";
-		// }
-		if (ownersResults.getTotalElements() == 1) {
+		if (ownersResults.isEmpty()) {
+			// no owners found
+			result.rejectValue("lastName", "notFound", "not found");
+			return "owners/findOwners";
+		}
+		else if (ownersResults.getTotalElements() == 1) {
 			// 1 owner found
 			owner = ownersResults.iterator().next();
 			return "redirect:/owners/" + owner.getId();
